@@ -1,5 +1,6 @@
 # Percolation-in-Real-Complex-Networks
 THESIS DIPLOMA - Real (Big) Data
+
 Abstract
 
 This dissertation describes complex collaboration networks which are based on real complex data (real complex networks). The data analyzed,
