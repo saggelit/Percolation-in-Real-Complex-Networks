@@ -17,7 +17,7 @@ EP_Cit_Counts=pd.read_table('201609_EP_Cit_Counts.txt',sep='|')
 list_EP_Cit_Counts=list(map(list,zip(list(EP_Cit_Counts['EP_Pub_date']),list(EP_Cit_Counts['EP_Pub_nbr']))))
 All_Dates=[]
 for i in range(len(list_EP_Cit_Counts)):
-    All_Dates.append([str(list_EP_Cit_Counts[i][0])[0:4],str(list_EP_Cit_Counts[i][0])[4:6],                      str(list_EP_Cit_Counts[i][0])[6:8],list_EP_Cit_Counts[i][1],str(list_EP_Cit_Counts[i][0])])
+    All_Dates.append([str(list_EP_Cit_Counts[i][0])[0:4],str(list_EP_Cit_Counts[i][0])[4:6],str(list_EP_Cit_Counts[i][0])[6:8],list_EP_Cit_Counts[i][1],str(list_EP_Cit_Counts[i][0])])
 
 list_EP_Cit_Counts=All_Dates
 
@@ -134,7 +134,7 @@ def creating_edges_fun_dynamical(data,step):
                 if k%step==0:
                     network.add_edges_from(links)
                     clusters=component_dict_fun(network)
-                    size.append([len(clusters[0]),len(clusters[1]),len(clusters[2]),                                len(clusters[3]),len(clusters[4])])
+                    size.append([len(clusters[0]),len(clusters[1]),len(clusters[2]),len(clusters[3]),len(clusters[4])])
                     net_edges.append(network.number_of_edges())
                     links.clear()
                     date.append(str(data[i][3][0:4])+'/'+str(data[i][3][4:6])+'/'+str(data[i][3][6:8]))
@@ -187,7 +187,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_App_reg_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_App_reg)):
-    EPO_App_reg_DataPlot[i].append([links_EPO_App_reg[i],sizes_EPO_App_reg[i][0],sizes_EPO_App_reg[i][1], sizes_EPO_App_reg[i][2],sizes_EPO_App_reg[i][3],sizes_EPO_App_reg[i][4]])
+    EPO_App_reg_DataPlot[i].append([links_EPO_App_reg[i],sizes_EPO_App_reg[i][0],sizes_EPO_App_reg[i][1],sizes_EPO_App_reg[i][2],sizes_EPO_App_reg[i][3],sizes_EPO_App_reg[i][4]])
 
 with open('FULL_EPO_App_reg__DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_App_reg_DataPlot.items():
@@ -251,7 +251,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_App_reg_C_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_App_reg_C)):
-    EPO_App_reg_C_DataPlot[i].append([links_EPO_App_reg_C[i],sizes_EPO_App_reg_C[i][0],sizes_EPO_App_reg_C[i][1], sizes_EPO_App_reg_C[i][2],sizes_EPO_App_reg_C[i][3],sizes_EPO_App_reg_C[i][4]])
+    EPO_App_reg_C_DataPlot[i].append([links_EPO_App_reg_C[i],sizes_EPO_App_reg_C[i][0],sizes_EPO_App_reg_C[i][1],sizes_EPO_App_reg_C[i][2],sizes_EPO_App_reg_C[i][3],sizes_EPO_App_reg_C[i][4]])
 
 with open('FULL_EPO_App_reg_C_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_App_reg_C_DataPlot.items():
@@ -307,7 +307,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_App_reg_A_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_App_reg_A)):
-    EPO_App_reg_A_DataPlot[i].append([links_EPO_App_reg_A[i], sizes_EPO_App_reg_A[i][0], sizes_EPO_App_reg_A[i][1], sizes_EPO_App_reg_A[i][2],   sizes_EPO_App_reg_A[i][3], sizes_EPO_App_reg_A[i][4]])
+    EPO_App_reg_A_DataPlot[i].append([links_EPO_App_reg_A[i], sizes_EPO_App_reg_A[i][0],sizes_EPO_App_reg_A[i][1],sizes_EPO_App_reg_A[i][2],sizes_EPO_App_reg_A[i][3],sizes_EPO_App_reg_A[i][4]])
 
 with open('FULL_EPO_App_reg_A_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_App_reg_A_DataPlot.items():
@@ -363,7 +363,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_App_reg_H_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_App_reg_H)):
-    EPO_App_reg_H_DataPlot[i].append([links_EPO_App_reg_H[i], sizes_EPO_App_reg_H[i][0], sizes_EPO_App_reg_H[i][1], sizes_EPO_App_reg_H[i][2], sizes_EPO_App_reg_H[i][3], sizes_EPO_App_reg_H[i][4]])
+    EPO_App_reg_H_DataPlot[i].append([links_EPO_App_reg_H[i],sizes_EPO_App_reg_H[i][0],sizes_EPO_App_reg_H[i][1],sizes_EPO_App_reg_H[i][2],sizes_EPO_App_reg_H[i][3],sizes_EPO_App_reg_H[i][4]])
 
 with open('FULL_EPO_App_reg_H_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_App_reg_H_DataPlot.items():
@@ -420,7 +420,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_App_reg_B_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_App_reg_B)):
-    EPO_App_reg_B_DataPlot[i].append([links_EPO_App_reg_B[i], sizes_EPO_App_reg_B[i][0], sizes_EPO_App_reg_B[i][1], sizes_EPO_App_reg_B[i][2], sizes_EPO_App_reg_B[i][3], sizes_EPO_App_reg_B[i][4]])
+    EPO_App_reg_B_DataPlot[i].append([links_EPO_App_reg_B[i],sizes_EPO_App_reg_B[i][0],sizes_EPO_App_reg_B[i][1],sizes_EPO_App_reg_B[i][2],sizes_EPO_App_reg_B[i][3],sizes_EPO_App_reg_B[i][4]])
 
 with open('FULL_EPO_App_reg_B_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_App_reg_B_DataPlot.items():
@@ -477,7 +477,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_App_reg_G_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_App_reg_G)):
-    EPO_App_reg_G_DataPlot[i].append([links_EPO_App_reg_G[i], sizes_EPO_App_reg_G[i][0], sizes_EPO_App_reg_G[i][1], sizes_EPO_App_reg_G[i][2], sizes_EPO_App_reg_G[i][3], sizes_EPO_App_reg_G[i][4]])
+    EPO_App_reg_G_DataPlot[i].append([links_EPO_App_reg_G[i],sizes_EPO_App_reg_G[i][0],sizes_EPO_App_reg_G[i][1],sizes_EPO_App_reg_G[i][2],sizes_EPO_App_reg_G[i][3],sizes_EPO_App_reg_G[i][4]])
 
 with open('FULL_EPO_App_reg_G_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_App_reg_G_DataPlot.items():
@@ -545,7 +545,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_Inv_reg_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_Inv_reg)):
-    EPO_Inv_reg_DataPlot[i].append([links_EPO_Inv_reg[i], sizes_EPO_Inv_reg[i][0], sizes_EPO_Inv_reg[i][1], sizes_EPO_Inv_reg[i][2], sizes_EPO_Inv_reg[i][3], sizes_EPO_Inv_reg[i][4]])
+    EPO_Inv_reg_DataPlot[i].append([links_EPO_Inv_reg[i],sizes_EPO_Inv_reg[i][0],sizes_EPO_Inv_reg[i][1],sizes_EPO_Inv_reg[i][2],sizes_EPO_Inv_reg[i][3],sizes_EPO_Inv_reg[i][4]])
 
 with open('FULL_EPO_Inv_reg__DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_Inv_reg_DataPlot.items():
@@ -609,7 +609,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_Inv_reg_C_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_Inv_reg_C)):
-    EPO_Inv_reg_C_DataPlot[i].append([links_EPO_Inv_reg_C[i], sizes_EPO_Inv_reg_C[i][0], sizes_EPO_Inv_reg_C[i][1], sizes_EPO_Inv_reg_C[i][2], sizes_EPO_Inv_reg_C[i][3], sizes_EPO_Inv_reg_C[i][4]])
+    EPO_Inv_reg_C_DataPlot[i].append([links_EPO_Inv_reg_C[i],sizes_EPO_Inv_reg_C[i][0],sizes_EPO_Inv_reg_C[i][1],sizes_EPO_Inv_reg_C[i][2],sizes_EPO_Inv_reg_C[i][3],sizes_EPO_Inv_reg_C[i][4]])
 
 with open('FULL_EPO_Inv_reg_C_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_Inv_reg_C_DataPlot.items():
@@ -665,7 +665,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_Inv_reg_A_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_Inv_reg_A)):
-    EPO_Inv_reg_A_DataPlot[i].append([links_EPO_Inv_reg_A[i], sizes_EPO_Inv_reg_A[i][0], sizes_EPO_Inv_reg_A[i][1], sizes_EPO_Inv_reg_A[i][2], sizes_EPO_Inv_reg_A[i][3], sizes_EPO_Inv_reg_A[i][4]])
+    EPO_Inv_reg_A_DataPlot[i].append([links_EPO_Inv_reg_A[i],sizes_EPO_Inv_reg_A[i][0],sizes_EPO_Inv_reg_A[i][1],sizes_EPO_Inv_reg_A[i][2],sizes_EPO_Inv_reg_A[i][3],sizes_EPO_Inv_reg_A[i][4]])
 
 with open('FULL_EPO_Inv_reg_A_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_Inv_reg_A_DataPlot.items():
@@ -721,7 +721,7 @@ plt.show()
 # Δεδομένα γραφικής παράστασης
 EPO_Inv_reg_H_DataPlot=collections.defaultdict(list)
 for i in range(len(sizes_EPO_Inv_reg_H)):
-    EPO_Inv_reg_H_DataPlot[i].append([links_EPO_Inv_reg_H[i], sizes_EPO_Inv_reg_H[i][0], sizes_EPO_Inv_reg_H[i][1], sizes_EPO_Inv_reg_H[i][2], sizes_EPO_Inv_reg_H[i][3], sizes_EPO_Inv_reg_H[i][4]])
+    EPO_Inv_reg_H_DataPlot[i].append([links_EPO_Inv_reg_H[i],sizes_EPO_Inv_reg_H[i][0],sizes_EPO_Inv_reg_H[i][1],sizes_EPO_Inv_reg_H[i][2],sizes_EPO_Inv_reg_H[i][3],sizes_EPO_Inv_reg_H[i][4]])
 
 with open('FULL_EPO_Inv_reg_H_DataPlot.txt', 'w') as convert_file:
     for key,value in EPO_Inv_reg_H_DataPlot.items():
