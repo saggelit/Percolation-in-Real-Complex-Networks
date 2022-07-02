@@ -18,7 +18,8 @@ EP_Cit_Counts=pd.read_table('201609_EP_Cit_Counts.txt',sep='|')
 list_EP_Cit_Counts=list(map(list,zip(list(EP_Cit_Counts['EP_Pub_date']),list(EP_Cit_Counts['EP_Pub_nbr']))))
 All_Dates=[]
 for i in range(len(list_EP_Cit_Counts)):
-    All_Dates.append([str(list_EP_Cit_Counts[i][0])[0:4],str(list_EP_Cit_Counts[i][0])[4:6],                      str(list_EP_Cit_Counts[i][0])[6:8],list_EP_Cit_Counts[i][1],str(list_EP_Cit_Counts[i][0])])
+    All_Dates.append([str(list_EP_Cit_Counts[i][0])[0:4],str(list_EP_Cit_Counts[i][0])[4:6],str(list_EP_Cit_Counts[i][0])[6:8],\
+                      list_EP_Cit_Counts[i][1],str(list_EP_Cit_Counts[i][0])])
 
 
 list_EP_Cit_Counts=All_Dates #2D List με ημερομηνίες σπασμένες και EP_Pub_nbr
@@ -168,7 +169,7 @@ def creating_edges_fun_dynamical(data,step):
                 if k%step==0:
                     network.add_edges_from(links)
                     clusters=component_dict_fun(network)
-                    size.append([len(clusters[0]),len(clusters[1]),len(clusters[2]),                                 len(clusters[3]),len(clusters[4])])
+                    size.append([len(clusters[0]),len(clusters[1]),len(clusters[2]),len(clusters[3]),len(clusters[4])])
                     net_edges.append(network.number_of_edges())
                     links.clear()
                     date.append(str(data[i][3][0:4])+'/'+str(data[i][3][4:6])+'/'+str(data[i][3][6:8]))
@@ -214,7 +215,7 @@ for i in range (int(len(All_time_windows)/3)):
             axes[i][j].plot(links_EPO_App_reg[k][l],sizes_EPO_App_reg[k][l][2],'<',ms=4,markeredgewidth=0.5,mec='b',mfc='none')
             axes[i][j].plot(links_EPO_App_reg[k][l],sizes_EPO_App_reg[k][l][3],'>',ms=4,markeredgewidth=0.5,mec='c',mfc='none')
             axes[i][j].plot(links_EPO_App_reg[k][l],sizes_EPO_App_reg[k][l][4],'s',ms=4,markeredgewidth=0.5,mec='y',mfc='none')
-        axes[i][j].legend(('1st cluster','2nd cluster','3rd cluster','4th cluster','5th cluster'),           shadow=True, title="Legend", fancybox=True,prop={'size': 11})
+        axes[i][j].legend(('1st cluster','2nd cluster','3rd cluster','4th cluster','5th cluster'),shadow=True,title="Legend",fancybox=True,prop={'size': 11})
         axes[i][j].locator_params(axis='both',nbins=5)
         axes[i][j].xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, pos: '{:,.1f}'.format(x/1000)))
         axes[i][j].tick_params(axis='x', labelsize=15)
@@ -229,7 +230,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_App_reg_TW_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_App_reg[i])):
-        EPO_App_reg_TW_DataPlot[i].append([links_EPO_App_reg[i][j],                                           sizes_EPO_App_reg[i][j][0],                                           sizes_EPO_App_reg[i][j][1],                                           sizes_EPO_App_reg[i][j][2],                                           sizes_EPO_App_reg[i][j][3],                                           sizes_EPO_App_reg[i][j][4]])
+        EPO_App_reg_TW_DataPlot[i].append([links_EPO_App_reg[i][j],\
+                                           sizes_EPO_App_reg[i][j][0],\
+                                           sizes_EPO_App_reg[i][j][1],\
+                                           sizes_EPO_App_reg[i][j][2],\
+                                           sizes_EPO_App_reg[i][j][3],\                                           
+                                           sizes_EPO_App_reg[i][j][4]])
 
 for key,value in EPO_App_reg_TW_DataPlot.items():
     with open('EPO_App_reg__TW_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -303,7 +309,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_App_reg_TW_C_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_App_reg_C[i])):
-        EPO_App_reg_TW_C_DataPlot[i].append([links_EPO_App_reg_C[i][j],                                             sizes_EPO_App_reg_C[i][j][0],                                             sizes_EPO_App_reg_C[i][j][1],                                             sizes_EPO_App_reg_C[i][j][2],                                             sizes_EPO_App_reg_C[i][j][3],                                             sizes_EPO_App_reg_C[i][j][4]])
+        EPO_App_reg_TW_C_DataPlot[i].append([links_EPO_App_reg_C[i][j],\
+                                             sizes_EPO_App_reg_C[i][j][0],\
+                                             sizes_EPO_App_reg_C[i][j][1],\
+                                             sizes_EPO_App_reg_C[i][j][2],\
+                                             sizes_EPO_App_reg_C[i][j][3],\
+                                             sizes_EPO_App_reg_C[i][j][4]])
 
 for key,value in EPO_App_reg_TW_C_DataPlot.items():
     with open('EPO_App_reg_TW_C_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -367,7 +378,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_App_reg_TW_A_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_App_reg_A[i])):
-        EPO_App_reg_TW_A_DataPlot[i].append([links_EPO_App_reg_A[i][j],                                             sizes_EPO_App_reg_A[i][j][0],                                             sizes_EPO_App_reg_A[i][j][1],                                             sizes_EPO_App_reg_A[i][j][2],                                             sizes_EPO_App_reg_A[i][j][3],                                             sizes_EPO_App_reg_A[i][j][4]])
+        EPO_App_reg_TW_A_DataPlot[i].append([links_EPO_App_reg_A[i][j],\
+                                             sizes_EPO_App_reg_A[i][j][0],\
+                                             sizes_EPO_App_reg_A[i][j][1],\
+                                             sizes_EPO_App_reg_A[i][j][2],\
+                                             sizes_EPO_App_reg_A[i][j][3],\
+                                             sizes_EPO_App_reg_A[i][j][4]])
 
 for key,value in EPO_App_reg_TW_A_DataPlot.items():
     with open('EPO_App_reg_TW_A_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -431,7 +447,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_App_reg_TW_H_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_App_reg_H[i])):
-        EPO_App_reg_TW_H_DataPlot[i].append([links_EPO_App_reg_H[i][j],                                             sizes_EPO_App_reg_H[i][j][0],                                             sizes_EPO_App_reg_H[i][j][1],                                             sizes_EPO_App_reg_H[i][j][2],                                             sizes_EPO_App_reg_H[i][j][3],                                             sizes_EPO_App_reg_H[i][j][4]])
+        EPO_App_reg_TW_H_DataPlot[i].append([links_EPO_App_reg_H[i][j],\
+                                             sizes_EPO_App_reg_H[i][j][0],\
+                                             sizes_EPO_App_reg_H[i][j][1],\
+                                             sizes_EPO_App_reg_H[i][j][2],\
+                                             sizes_EPO_App_reg_H[i][j][3],\
+                                             sizes_EPO_App_reg_H[i][j][4]])
 
 for key,value in EPO_App_reg_TW_H_DataPlot.items():
     with open('EPO_App_reg_TW_H_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -495,7 +516,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_App_reg_TW_B_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_App_reg_B[i])):
-        EPO_App_reg_TW_B_DataPlot[i].append([links_EPO_App_reg_B[i][j],                                             sizes_EPO_App_reg_B[i][j][0],                                             sizes_EPO_App_reg_B[i][j][1],                                             sizes_EPO_App_reg_B[i][j][2],                                             sizes_EPO_App_reg_B[i][j][3],                                             sizes_EPO_App_reg_B[i][j][4]])
+        EPO_App_reg_TW_B_DataPlot[i].append([links_EPO_App_reg_B[i][j],\
+                                             sizes_EPO_App_reg_B[i][j][0],\
+                                             sizes_EPO_App_reg_B[i][j][1],\
+                                             sizes_EPO_App_reg_B[i][j][2],\
+                                             sizes_EPO_App_reg_B[i][j][3],\
+                                             sizes_EPO_App_reg_B[i][j][4]])
 
 for key,value in EPO_App_reg_TW_B_DataPlot.items():
     with open('EPO_App_reg_TW_B_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -559,7 +585,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_App_reg_TW_G_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_App_reg_G[i])):
-        EPO_App_reg_TW_G_DataPlot[i].append([links_EPO_App_reg_G[i][j],                                             sizes_EPO_App_reg_G[i][j][0],                                             sizes_EPO_App_reg_G[i][j][1],                                             sizes_EPO_App_reg_G[i][j][2],                                             sizes_EPO_App_reg_G[i][j][3],                                             sizes_EPO_App_reg_G[i][j][4]])
+        EPO_App_reg_TW_G_DataPlot[i].append([links_EPO_App_reg_G[i][j],\
+                                             sizes_EPO_App_reg_G[i][j][0],\
+                                             sizes_EPO_App_reg_G[i][j][1],\
+                                             sizes_EPO_App_reg_G[i][j][2],\
+                                             sizes_EPO_App_reg_G[i][j][3],\
+                                             sizes_EPO_App_reg_G[i][j][4]])
 
 for key,value in EPO_App_reg_TW_G_DataPlot.items():
     with open('EPO_App_reg_TW_G_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -614,7 +645,7 @@ for i in range (int(len(All_time_windows)/3)):
             axes[i][j].plot(links_EPO_Inv_reg[k][l],sizes_EPO_Inv_reg[k][l][2],'<',ms=4,markeredgewidth=0.5,mec='b',mfc='none')
             axes[i][j].plot(links_EPO_Inv_reg[k][l],sizes_EPO_Inv_reg[k][l][3],'>',ms=4,markeredgewidth=0.5,mec='c',mfc='none')
             axes[i][j].plot(links_EPO_Inv_reg[k][l],sizes_EPO_Inv_reg[k][l][4],'s',ms=4,markeredgewidth=0.5,mec='y',mfc='none')
-        axes[i][j].legend(('1st cluster','2nd cluster','3rd cluster','4th cluster','5th cluster'),           shadow=True, title="Legend", fancybox=True,prop={'size': 11})
+        axes[i][j].legend(('1st cluster','2nd cluster','3rd cluster','4th cluster','5th cluster'), shadow=True, title="Legend", fancybox=True,prop={'size': 11})
         axes[i][j].locator_params(axis='both',nbins=5)
         axes[i][j].xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, pos: '{:,.1f}'.format(x/1000)))
         axes[i][j].tick_params(axis='x', labelsize=15)
@@ -629,7 +660,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_Inv_reg_TW_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_Inv_reg[i])):
-        EPO_Inv_reg_TW_DataPlot[i].append([links_EPO_Inv_reg[i][j],                                           sizes_EPO_Inv_reg[i][j][0],                                           sizes_EPO_Inv_reg[i][j][1],                                           sizes_EPO_Inv_reg[i][j][2],                                           sizes_EPO_Inv_reg[i][j][3],                                           sizes_EPO_Inv_reg[i][j][4]])
+        EPO_Inv_reg_TW_DataPlot[i].append([links_EPO_Inv_reg[i][j],\
+                                           sizes_EPO_Inv_reg[i][j][0],\
+                                           sizes_EPO_Inv_reg[i][j][1],\
+                                           sizes_EPO_Inv_reg[i][j][2],\
+                                           sizes_EPO_Inv_reg[i][j][3],\
+                                           sizes_EPO_Inv_reg[i][j][4]])
 
 for key,value in EPO_Inv_reg_TW_DataPlot.items():
     with open('EPO_Inv_reg__TW_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -712,7 +748,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_Inv_reg_TW_C_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_Inv_reg_C[i])):
-        EPO_Inv_reg_TW_C_DataPlot[i].append([links_EPO_Inv_reg_C[i][j],                                             sizes_EPO_Inv_reg_C[i][j][0],                                             sizes_EPO_Inv_reg_C[i][j][1],                                             sizes_EPO_Inv_reg_C[i][j][2],                                             sizes_EPO_Inv_reg_C[i][j][3],                                             sizes_EPO_Inv_reg_C[i][j][4]])
+        EPO_Inv_reg_TW_C_DataPlot[i].append([links_EPO_Inv_reg_C[i][j],\
+                                             sizes_EPO_Inv_reg_C[i][j][0],\
+                                             sizes_EPO_Inv_reg_C[i][j][1],\
+                                             sizes_EPO_Inv_reg_C[i][j][2],\ 
+                                             sizes_EPO_Inv_reg_C[i][j][3],\
+                                             sizes_EPO_Inv_reg_C[i][j][4]])
 
 for key,value in EPO_Inv_reg_TW_C_DataPlot.items():
     with open('EPO_Inv_reg_TW_C_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -777,7 +818,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_Inv_reg_TW_A_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_Inv_reg_A[i])):
-        EPO_Inv_reg_TW_A_DataPlot[i].append([links_EPO_Inv_reg_A[i][j],                                             sizes_EPO_Inv_reg_A[i][j][0],                                             sizes_EPO_Inv_reg_A[i][j][1],                                             sizes_EPO_Inv_reg_A[i][j][2],                                             sizes_EPO_Inv_reg_A[i][j][3],                                             sizes_EPO_Inv_reg_A[i][j][4]])
+        EPO_Inv_reg_TW_A_DataPlot[i].append([links_EPO_Inv_reg_A[i][j],\
+                                             sizes_EPO_Inv_reg_A[i][j][0],\
+                                             sizes_EPO_Inv_reg_A[i][j][1],\
+                                             sizes_EPO_Inv_reg_A[i][j][2],\
+                                             sizes_EPO_Inv_reg_A[i][j][3],\
+                                             sizes_EPO_Inv_reg_A[i][j][4]])
 
 for key,value in EPO_Inv_reg_TW_A_DataPlot.items():
     with open('EPO_Inv_reg_TW_A_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -842,7 +888,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_Inv_reg_TW_H_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_Inv_reg_H[i])):
-        EPO_Inv_reg_TW_H_DataPlot[i].append([links_EPO_Inv_reg_H[i][j],                                             sizes_EPO_Inv_reg_H[i][j][0],                                             sizes_EPO_Inv_reg_H[i][j][1],                                             sizes_EPO_Inv_reg_H[i][j][2],                                             sizes_EPO_Inv_reg_H[i][j][3],                                             sizes_EPO_Inv_reg_H[i][j][4]])
+        EPO_Inv_reg_TW_H_DataPlot[i].append([links_EPO_Inv_reg_H[i][j],\
+                                             sizes_EPO_Inv_reg_H[i][j][0],\
+                                             sizes_EPO_Inv_reg_H[i][j][1],\
+                                             sizes_EPO_Inv_reg_H[i][j][2],\
+                                             sizes_EPO_Inv_reg_H[i][j][3],\
+                                             sizes_EPO_Inv_reg_H[i][j][4]])
 
 for key,value in EPO_Inv_reg_TW_H_DataPlot.items():
     with open('EPO_Inv_reg_TW_H_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -907,7 +958,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_Inv_reg_TW_B_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_Inv_reg_B[i])):
-        EPO_Inv_reg_TW_B_DataPlot[i].append([links_EPO_Inv_reg_B[i][j],                                             sizes_EPO_Inv_reg_B[i][j][0],                                             sizes_EPO_Inv_reg_B[i][j][1],                                             sizes_EPO_Inv_reg_B[i][j][2],                                             sizes_EPO_Inv_reg_B[i][j][3],                                             sizes_EPO_Inv_reg_B[i][j][4]])
+        EPO_Inv_reg_TW_B_DataPlot[i].append([links_EPO_Inv_reg_B[i][j],\
+                                             sizes_EPO_Inv_reg_B[i][j][0],\
+                                             sizes_EPO_Inv_reg_B[i][j][1],\
+                                             sizes_EPO_Inv_reg_B[i][j][2],\
+                                             sizes_EPO_Inv_reg_B[i][j][3],\
+                                             sizes_EPO_Inv_reg_B[i][j][4]])
 
 for key,value in EPO_Inv_reg_TW_B_DataPlot.items():
     with open('EPO_Inv_reg_TW_B_DataPlot'+str(key)+'.txt', 'w') as convert_file:
@@ -927,7 +983,7 @@ with open('EPO_Inv_reg_TW_B_Data.txt', 'w') as convert_file:
 
 ##### Patents "G": Physics
 
-# Aντιστοίχιση για να κρατήσω μόνο τις σειρές με appln_id -> C
+# Aντιστοίχιση για να κρατήσω μόνο τις σειρές με appln_id -> G
 EPO_Inv_reg_G_Pub_nbr_Person_id_Appl_id=[]
 for i in range(len(All_time_windows)):
     EPO_Inv_reg_G_Pub_nbr_Person_id_Appl_id.append(appln_id_pub_nbr_person_id_fun(EPO_Inv_reg_Appln_id[i],list_Ipc_G))
@@ -972,7 +1028,12 @@ for i in range (int(len(All_time_windows)/3)):
 EPO_Inv_reg_TW_G_DataPlot=collections.defaultdict(list)
 for i in range(len(All_time_windows)):
     for j in range(len(sizes_EPO_Inv_reg_G[i])):
-        EPO_Inv_reg_TW_G_DataPlot[i].append([links_EPO_Inv_reg_G[i][j],                                             sizes_EPO_Inv_reg_G[i][j][0],                                             sizes_EPO_Inv_reg_G[i][j][1],                                             sizes_EPO_Inv_reg_G[i][j][2],                                             sizes_EPO_Inv_reg_G[i][j][3],                                             sizes_EPO_Inv_reg_G[i][j][4]])
+        EPO_Inv_reg_TW_G_DataPlot[i].append([links_EPO_Inv_reg_G[i][j],\
+                                             sizes_EPO_Inv_reg_G[i][j][0],\
+                                             sizes_EPO_Inv_reg_G[i][j][1],\
+                                             sizes_EPO_Inv_reg_G[i][j][2],\
+                                             sizes_EPO_Inv_reg_G[i][j][3],\
+                                             sizes_EPO_Inv_reg_G[i][j][4]])
 
 for key,value in EPO_Inv_reg_TW_G_DataPlot.items():
     with open('EPO_Inv_reg_TW_G_DataPlot'+str(key)+'.txt', 'w') as convert_file:
