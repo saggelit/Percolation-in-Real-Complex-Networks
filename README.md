@@ -1,5 +1,5 @@
 # Percolation-in-Real-Complex-Networks
-THESIS DIPLOMA - Real (Big) Data
+THESIS DIPLOMA - Big Data
 
 Abstract
 
